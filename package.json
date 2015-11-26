@@ -1,0 +1,34 @@
+{
+  "name": "palette-lovers",
+  "version": "0.0.0",
+  "description": "Generate a palette file with a COLOURLovers palette",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc ava && nyc report --reporter=lcov",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardoLopes/palette-lovers.git"
+  },
+  "keywords": [
+    "palette",
+    "colors",
+    "colourlovers"
+  ],
+  "author": "“Eduardo <EduardoLopesDS@gmail.com> (http://square64.tumblr.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EduardoLopes/palette-lovers/issues"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "palette-lovers": "index.js"
+  },
+  "homepage": "https://github.com/EduardoLopes/palette-lovers#readme",
+  "devDependencies": {
+    "ava": "^0.6.1",
+    "coveralls": "^2.11.4",
+    "nyc": "^3.2.2"
+  }
+}
