@@ -30,5 +30,11 @@
     "ava": "^0.6.1",
     "coveralls": "^2.11.4",
     "nyc": "^3.2.2"
+  },
+  "dependencies": {
+    "command-line-args": "^2.1.1",
+    "hex-rgb": "^1.0.0",
+    "is-nan": "^1.2.1",
+    "request": "^2.67.0"
   }
 }
