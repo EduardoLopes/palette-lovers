@@ -7,8 +7,10 @@ var hexToRgb = require('hex-rgb');
 var fs = require('fs');
 
 var cli = commandLineArgs([
-  { name: 'id', type: String, defaultOption: true }
+  { name: 'id', type: String, defaultOption: true },
+  { name: 'filename', type: String}
 ]);
+
 
 var options = cli.parse();
 
@@ -43,7 +45,13 @@ request('http://www.colourlovers.com/api/palette/'+ ID +'?format=json', function
 
     });
 
-    var name = getPaletteNameFromURL(body.url);
+    var name;
+
+    if(typeof options.filename == 'undefined'){
+      name = getPaletteNameFromURL(body.url);
+    } else {
+      name = options.filename;
+    }
 
     fs.writeFile('./'+name+'.gpl', output, function(err) {
       if(err) {
