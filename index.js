@@ -8,7 +8,7 @@ var fs = require('fs');
 
 var cli = commandLineArgs([
   { name: 'id', type: String, defaultOption: true },
-  { name: 'filename', type: String}
+  { name: 'filename', alias: 'f', type: String}
 ]);
 
 var options = cli.parse();
