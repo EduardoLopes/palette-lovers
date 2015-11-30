@@ -54,7 +54,7 @@ request('http://www.colourlovers.com/api/palette/'+ ID +'?format=json', function
 
     body = content[0];
 
-    output += 'GIMP Paletten\n';
+    output += 'GIMP Palette\n';
     output += 'Name: ' + body.title + '\n';
     output += 'Columns: 0\n';
     output += '#\n';
