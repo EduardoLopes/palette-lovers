@@ -1,6 +1,6 @@
 {
   "name": "palette-lovers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate a palette file from a COLOURLovers palette",
   "main": "index.js",
   "scripts": {
