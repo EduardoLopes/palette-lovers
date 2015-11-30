@@ -11,7 +11,6 @@ var cli = commandLineArgs([
   { name: 'filename', type: String}
 ]);
 
-
 var options = cli.parse();
 
 var ID;
@@ -26,12 +25,16 @@ function getPaletteNameFromURL(url){
   return url.match(/palette\/\d+\/(.*)/)[1];
 }
 
-request('http://www.colourlovers.com/api/palette/'+ ID +'?format=json', function (error, response, body) {
+request('http://www.colourlovers.com/api/palette/'+ ID +'?format=json', function (error, response, content) {
   var output = '';
+  var body;
+  var name;
 
-  if (!error && response.statusCode == 200) {
+  content = JSON.parse(content);
 
-    body = JSON.parse(body)[0];
+  if (!error && response.statusCode == 200 && content.length > 0) {
+
+    body = content[0];
 
     output += 'GIMP Paletten\n';
     output += 'Name: ' + body.title + '\n';
@@ -44,8 +47,6 @@ request('http://www.colourlovers.com/api/palette/'+ ID +'?format=json', function
       output += rbg[0] +'\t'+rbg[1] +'\t'+rbg[2] +'\n';
 
     });
-
-    var name;
 
     if(typeof options.filename == 'undefined'){
       name = getPaletteNameFromURL(body.url);
@@ -61,7 +62,9 @@ request('http://www.colourlovers.com/api/palette/'+ ID +'?format=json', function
 
   } else {
 
-    console.log('ERROR: ARE YOU CONNECTED TO THE INTERNET?');
+    if(content.length == 0){
+      console.log('ERROR: Palette not found. Check if this palette really exists! ');
+    }
 
   }
 
