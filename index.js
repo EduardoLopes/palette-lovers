@@ -16,7 +16,7 @@ var options = cli.parse();
 
 var ID;
 
-if(options.help){
+if(options.help || typeof options.id == 'undefined'){
   console.log(cli.getUsage({
     title: 'palette-lovers',
     description: 'Generate a palette file with a COLOURLovers palette',
@@ -32,7 +32,6 @@ if(options.help){
   return false;
 
 }
-
 
 if(isNaN( parseInt(options.id) ) ){
   ID = options.id.match(/(?:palette\/(\d+)|(\d+))/)[1];
