@@ -7,13 +7,32 @@ var hexToRgb = require('hex-rgb');
 var fs = require('fs');
 
 var cli = commandLineArgs([
-  { name: 'id', type: String, defaultOption: true },
-  { name: 'filename', alias: 'f', type: String}
+  { name: 'id', type: String, defaultOption: true, description: 'The id of the palette'},
+  { name: 'filename', alias: 'f', type: String, description: 'Set the name of the file'},
+  { name: 'help', alias: 'h', type: Boolean, description: 'Display usage guide'}
 ]);
 
 var options = cli.parse();
 
 var ID;
+
+if(options.help){
+  console.log(cli.getUsage({
+    title: 'palette-lovers',
+    description: 'Generate a palette file with a COLOURLovers palette',
+    synopsis: [
+      '$ palette-lovers http://www.colourlovers.com/palette/3950622/violet_gen',
+      '$ palette-lovers 3950622',
+      '$ palette-lovers 3950622 --filename violet_color_ramp',
+      '$ palette-lovers 3950622 --f violet_color_ramp'
+    ],
+    hide: "id"
+  }));
+
+  return false;
+
+}
+
 
 if(isNaN( parseInt(options.id) ) ){
   ID = options.id.match(/(?:palette\/(\d+)|(\d+))/)[1];
