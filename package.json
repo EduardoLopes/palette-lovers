@@ -1,7 +1,7 @@
 {
   "name": "palette-lovers",
   "version": "0.1.0",
-  "description": "Generate a palette file with a COLOURLovers palette",
+  "description": "Generate a palette file from a COLOURLovers palette",
   "main": "index.js",
   "scripts": {
     "test": "nyc ava && nyc report --reporter=lcov",
